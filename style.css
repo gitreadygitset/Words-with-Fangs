@@ -2,7 +2,10 @@ input {
     
 }
 #word_display {
-    height: 75px;
+    height: auto;
     font-size: 36px;
 }
 
+p {
+    font-size: 18px;
+}

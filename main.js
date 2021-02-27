@@ -28,6 +28,7 @@ function printGame(word){
         }
     } 
     display.innerHTML = output;
+    return output;
 }
 
 function acceptWord(event){
@@ -45,8 +46,9 @@ function acceptLetter(event){
         if(letter.length === 1 && letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122){
             if(!guessedLetters.includes(letter)){
                 guessedLetters.push(letter);
-                tallyGuesses();
-                printGame(word);
+                tallyWrongGuesses();
+                let output = printGame(word);
+                checkForEnd(output);
             } else {
                 alert('You already guessed that letter!')
             }
@@ -57,10 +59,24 @@ function acceptLetter(event){
     }   
 }
 
-function tallyGuesses(){
+function tallyWrongGuesses(){
     if(!word.includes(letter)){
         wrongGuesses.push(letter);
         guessTracker.innerHTML = `Wrong guesses so far: ${wrongGuesses.join(', ')}`;
+    }
+}
+
+function checkForEnd(output){
+    const message = document.createElement('p');
+    let winMessage = "You figured out the answer and escaped Dracula...this time! Enter another word to play again.";
+    let loseMessage = "Too many wrong letters! I'm here to suck your blood!"
+
+    if(!output.includes('_')){
+        message.innerHTML = winMessage;
+        display.appendChild(message);
+    } else if(wrongGuesses.length === 7){
+        message.innerHTML = loseMessage;
+        display.appendChild(message);
     }
 }
 
