@@ -1,15 +1,16 @@
-const display = document.getElementById('word-display');
-const wordInput = document.getElementById('word-input');
-const letterInput = document.getElementById('letter-input');
+const display = document.getElementById('word_display');
+const wordInput = document.getElementById('word_input');
+const letterInput = document.getElementById('letter_input');
+const guessTracker = document.getElementById('guess_tracker');
 
 let guessedLetters;
 let word;
-let numGuesses;
+let wrongGuesses;
 let letter;
 
 function newGame(){
     guessedLetters = [];
-    numGuesses = 0;
+    wrongGuesses = [];
 }
 
 function printGame(word){
@@ -42,12 +43,24 @@ function acceptLetter(event){
     if(event.keyCode === 13){
         letter = letterInput.value.toLowerCase();
         if(letter.length === 1 && letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122){
-            guessedLetters.push(letter);
-            letterInput.value = '';
-            printGame(word);
+            if(!guessedLetters.includes(letter)){
+                guessedLetters.push(letter);
+                tallyGuesses();
+                printGame(word);
+            } else {
+                alert('You already guessed that letter!')
+            }
         } else {
-            alert('Please enter a single letter only! All special characters needed are provided for you')
+            alert('Please enter a single letter only! All special characters needed are provided for you.')
         }
+        letterInput.value = '';
+    }   
+}
+
+function tallyGuesses(){
+    if(!word.includes(letter)){
+        wrongGuesses.push(letter);
+        guessTracker.innerHTML = `Wrong guesses so far: ${wrongGuesses.join(', ')}`;
     }
 }
 

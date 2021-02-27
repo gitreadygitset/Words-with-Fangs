@@ -1,8 +1,8 @@
 input {
     
 }
-#word-display {
-    height: 200px;
+#word_display {
+    height: 75px;
     font-size: 36px;
 }
 
