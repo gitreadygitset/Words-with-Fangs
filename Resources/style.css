@@ -4,6 +4,7 @@ input {
 #word_display {
     height: auto;
     font-size: 36px;
+    margin-bottom: 2em;
 }
 
 p {

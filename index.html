@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <head>
     <title>Hangman</title>
-    <link rel = "stylesheet" type = "text/css" href = "./style.css">
-    <script src = "./main.js" defer></script>
+    <link rel = "stylesheet" type = "text/css" href = "Resources/style.css">
+    <script src = "Resources/main.js" defer></script>
 </head>
 <body>
+    <div id = "hint">
+        Hint:
+    </div>
     <div id = "guess_tracker">
-        <p> No wrong guesses so far</p>
+        <p>No wrong guesses so far</p>
     </div>
     <div id = "gallows">
     </div>
     <div id = "word_display">
     </div>
     <div id = "input">
-        <input type = "text" id = "word_input" placeholder = "Enter a word or phrase">
+        <input type = "text" id = "seed_input" placeholder = "Enter a word or phrase">
         <input type = "text" id = "letter_input" placeholder = "Guess a letter">
     </div>
 
