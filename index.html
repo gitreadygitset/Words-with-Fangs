@@ -5,19 +5,15 @@
     <script src = "Resources/main.js" defer></script>
 </head>
 <body>
-    <div id = "hint">
-        Hint:
+    <h1>Dracula is hunting you...</h1>
+    <h2>Escape him by guessing the word</h2>
+    <div id = "text_box">
+        <p id = "hint">Hint:</p>
+        <p id = "guess_tracker">No wrong guesses so far</p>
+        <p id = "word_display"></p> 
+        <div id = "input">
+            <input type = "text" id = "seed_input" placeholder = "Enter a word or phrase">
+            <input type = "text" id = "letter_input" placeholder = "Guess a letter">
+        </div>
     </div>
-    <div id = "guess_tracker">
-        <p>No wrong guesses so far</p>
-    </div>
-    <div id = "gallows">
-    </div>
-    <div id = "word_display">
-    </div>
-    <div id = "input">
-        <input type = "text" id = "seed_input" placeholder = "Enter a word or phrase">
-        <input type = "text" id = "letter_input" placeholder = "Guess a letter">
-    </div>
-
 </body>

@@ -15,6 +15,7 @@ function newGame(){
     wrongGuesses = [];
     guessTracker.innerHTML = "No wrong guesses so far";
     display.innerHTML = '';
+    letterInput.style.display = 'none';
 }
 
 function printGame(word){
@@ -52,6 +53,8 @@ async function generateWord(){
             if(jsonResponse.length > 0){
                 let index = Math.floor(Math.random() * jsonResponse.length);
                 word = jsonResponse[index].word;
+                letterInput.style.display = 'block';
+                seedInput.style.display = 'none';
                 printGame(word);
             } else {
                 display.innerHTML = 'No related words found. Please try again';
@@ -83,6 +86,7 @@ function acceptLetter(event){
     }   
 }
 
+
 function tallyWrongGuesses(){
     if(!word.includes(letter)){
         wrongGuesses.push(letter);
@@ -91,16 +95,19 @@ function tallyWrongGuesses(){
 }
 
 function checkForEnd(output){
-    const message = document.createElement('p');
-    let winMessage = "You figured out the answer and escaped Dracula...this time! Enter another word to play again.";
-    let loseMessage = `Too many wrong letters! I'm here to suck your blood! (The answer was ${word}).`
-
+    let winMessage = `You figured out "${word}" and escaped Dracula...this time! Enter another word to play again.`;
+    let loseMessage = `Too many wrong letters! I'm here to suck your blood! (The answer was "${word}").`
+    let end = false;
     if(!output.includes('_')){
-        message.innerHTML = winMessage;
-        display.appendChild(message);
+        display.innerHTML = winMessage;
+        end = true;
     } else if(wrongGuesses.length === 7){
-        message.innerHTML = loseMessage;
-        display.appendChild(message);
+        display.innerHTML = loseMessage;
+        end=true;
+    }
+    if(end){
+        seedInput.style.display = 'block';
+        letterInput.style.display = 'none';
     }
 }
 
