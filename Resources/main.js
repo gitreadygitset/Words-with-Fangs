@@ -3,6 +3,7 @@ const seedInput = document.getElementById('seed_input');
 const letterInput = document.getElementById('letter_input');
 const guessTracker = document.getElementById('guess_tracker');
 const hintDisplay = document.getElementById('hint');
+const dracula = document.querySelector('img');
 
 let guessedLetters;
 let seed;
@@ -15,7 +16,10 @@ function newGame(){
     wrongGuesses = [];
     guessTracker.innerHTML = "No wrong guesses so far";
     display.innerHTML = '';
+    hintDisplay.style.visibility = 'visible';
+    guessTracker.style.visibility = 'visible';
     letterInput.style.display = 'none';
+    dracula.style.display = 'none';
 }
 
 function printGame(word){
@@ -95,14 +99,17 @@ function tallyWrongGuesses(){
 }
 
 function checkForEnd(output){
-    let winMessage = `You figured out "${word}" and escaped Dracula...this time! Enter another word to play again.`;
-    let loseMessage = `Too many wrong letters! I'm here to suck your blood! (The answer was "${word}").`
+    let winMessage = `You figured out <span class = "bloody">${word}</span> and escaped Dracula...this time! Enter another word to play again.`;
+    let loseMessage = `<span class = "bloody">Too many wrong letters! I'm here to suck your blood! The answer was <span class = "white">${word}</span></span>`;
     let end = false;
     if(!output.includes('_')){
         display.innerHTML = winMessage;
         end = true;
     } else if(wrongGuesses.length === 7){
         display.innerHTML = loseMessage;
+        dracula.style.display = 'block';
+        hintDisplay.style.visibility = 'hidden';
+        guessTracker.style.visibility = 'hidden';
         end=true;
     }
     if(end){

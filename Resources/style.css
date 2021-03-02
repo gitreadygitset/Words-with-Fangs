@@ -28,6 +28,13 @@ h1, h2{
     opacity: .75;
 }
 
+img {
+    position: absolute;
+    z-index: 2;
+    opacity: .7;
+    display: none;
+}
+
 h1{
     font-family: 'Nosifer';
     font-size: 2.5rem;
@@ -40,6 +47,7 @@ h2{
     font-size: 2rem;
 }
 #text_box {
+    z-index: 1;
     position: relative;
     top: 20%;
     margin: auto;
@@ -52,9 +60,10 @@ h2{
     flex-direction: column;
     align-items: center;
     justify-items: flex-start;
-    height: 450px;
+    min-height: 450px;
     border: 5px solid hsla(4, 92%, 20%, 1);
 }
+
 #text_box p {
     font-size: 1.5rem;
     margin-top: 1em;
@@ -67,10 +76,28 @@ h2{
     margin-bottom: 1em;
     text-align: center;
 }
-#word_display{
+.bloody {
+    color: hsla(4, 92%, 20%, 1);
+    font-weight: inherit;
+    font-size: inherit;
+}
 
+.white {
+    color: white;
+    font-weight: inherit;
+    font-size: inherit;
+} 
+
+input {
+    margin-bottom: 2em;
+    text-align: center;
+    background-color: black;
+    color: white;
+    outline: none;
+    padding: .5rem;
 }
 #letter_input {
     display: none;
 }
+
 
