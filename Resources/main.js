@@ -59,6 +59,7 @@ async function generateWord(){
                 word = jsonResponse[index].word;
                 letterInput.style.display = 'block';
                 seedInput.style.display = 'none';
+                display.style.fontSize = '3rem';
                 printGame(word);
             } else {
                 display.innerHTML = 'No related words found. Please try again';
