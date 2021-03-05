@@ -24,7 +24,7 @@ function newGame(){
 
 function printGame(word){
     output = ''
-    specialChars = ['?', "'", ",", "!", "&"]
+    specialChars = ['?', "'", ",", "!", "&", "-"]
     for(let i=0; i < word.length; i++){
         if(guessedLetters.includes(word[i].toLowerCase())){
             output += word[i];
